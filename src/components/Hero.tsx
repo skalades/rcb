@@ -34,45 +34,50 @@ export default function Hero() {
         zIndex: 0
       }} />
 
-      <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+      <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', padding: '0 1rem' }}>
         <p className="font-heading" style={{ 
-          fontSize: '1rem', 
+          fontSize: '0.8rem', 
           color: 'var(--primary)', 
           textTransform: 'uppercase', 
           letterSpacing: '0.4em', 
-          marginBottom: '2rem',
+          marginBottom: '1.5rem',
           opacity: 0.8
         }}>
           #TIMETOSHINE • Garut Premium Detailing
         </p>
         <h1 style={{ 
-          fontSize: 'clamp(3rem, 8vw, 6.5rem)', 
-          marginBottom: '2rem', 
+          fontSize: 'clamp(2.5rem, 10vw, 6.5rem)', 
+          marginBottom: '1.5rem', 
           color: 'var(--text-main)', 
           lineHeight: 0.9,
           maxWidth: '900px',
-          margin: '0 auto 2rem auto'
+          margin: '0 auto 1.5rem auto'
         }}>
           ESTABLISH <br />
           <span className="text-gradient">NEW STANDARDS</span>
         </h1>
         <p style={{ 
-          fontSize: '1.25rem', 
+          fontSize: '1rem', 
           color: 'var(--text-muted)', 
           maxWidth: '600px', 
-          margin: '0 auto 4rem auto', 
+          margin: '0 auto 2.5rem auto', 
           lineHeight: '1.6',
           fontWeight: 500
         }}>
           Pencucian mobil premium dengan teknologi snow wash dan perawatan detail untuk kendaraan kesayangan Anda.
         </p>
-        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-          <a href="#contact" className="premium-btn">
+        <div style={{ 
+          display: 'flex', 
+          gap: '1rem', 
+          justifyContent: 'center',
+          flexDirection: 'row',
+          flexWrap: 'wrap'
+        }}>
+          <a href="#contact" className="premium-btn" style={{ padding: '1rem 2rem', fontSize: '0.85rem' }}>
             Booking Now
-            <span style={{ fontSize: '1.2rem' }}>→</span>
           </a>
-          <a href="#services" className="premium-btn-outline">
-            Discover Services
+          <a href="#services" className="premium-btn-outline" style={{ padding: '1rem 2rem', fontSize: '0.85rem' }}>
+            Services
           </a>
         </div>
       </div>

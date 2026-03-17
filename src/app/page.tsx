@@ -5,6 +5,7 @@ import About from '@/components/About';
 import Gallery from '@/components/Gallery';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import BottomNav from '@/components/BottomNav';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Gallery />
       <Contact />
       <Footer />
+      <BottomNav />
     </main>
   );
 }

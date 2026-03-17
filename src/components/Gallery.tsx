@@ -18,11 +18,10 @@ export default function Gallery() {
           <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Hasil pengerjaan detail yang menunjukkan dedikasi kami di RCB CARWASH.</p>
         </div>
         
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(3, 1fr)', 
-          gap: '1.5rem',
-          gridAutoRows: '250px'
+        <div className="bento-grid" style={{ 
+          position: 'relative', 
+          zIndex: 1,
+          gridAutoRows: '200px'
         }}>
           {images.map((img, i) => (
             <div key={img.id} className="glass" style={{

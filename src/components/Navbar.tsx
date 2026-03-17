@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <div style={{
+    <div className="hide-on-mobile" style={{
       position: 'fixed',
       top: '1.5rem',
       left: 0,

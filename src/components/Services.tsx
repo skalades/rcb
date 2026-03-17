@@ -56,7 +56,7 @@ export default function Services() {
             gridColumn: 'span 2', 
             gridRow: 'span 2', 
             borderRadius: 'var(--radius)', 
-            padding: '4rem',
+            padding: '2rem',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-end',
@@ -64,11 +64,12 @@ export default function Services() {
             overflow: 'hidden',
             backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url("/gallery_1.png")',
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
+            minHeight: '300px'
           }}>
-            <h3 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{services[0].title}</h3>
-            <p style={{ color: 'var(--text-main)', opacity: 0.8, marginBottom: '2.5rem', maxWidth: '400px' }}>{services[0].desc}</p>
-            <div style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--primary)' }}>{services[0].price}</div>
+            <h3 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', marginBottom: '1rem' }}>{services[0].title}</h3>
+            <p style={{ color: 'var(--text-main)', opacity: 0.8, marginBottom: '2rem', maxWidth: '400px', fontSize: '0.9rem' }}>{services[0].desc}</p>
+            <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--primary)' }}>{services[0].price}</div>
           </div>
 
           {/* Card 2: Medium */}
@@ -76,19 +77,20 @@ export default function Services() {
             gridColumn: 'span 2', 
             gridRow: 'span 1', 
             borderRadius: 'var(--radius)', 
-            padding: '2.5rem',
+            padding: '1.5rem',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             backgroundImage: 'linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url("/hero_branded.png")',
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
+            minHeight: '150px'
           }}>
             <div style={{ maxWidth: '300px' }}>
-              <h3 style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>{services[2].title}</h3>
-              <p style={{ color: 'var(--text-main)', opacity: 0.8, fontSize: '0.9rem' }}>{services[2].desc}</p>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{services[2].title}</h3>
+              <p style={{ color: 'var(--text-main)', opacity: 0.8, fontSize: '0.8rem' }}>{services[2].desc}</p>
             </div>
-            <div style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1.5rem' }}>{services[2].price}</div>
+            <div style={{ color: 'var(--primary)', fontWeight: 800, fontSize: '1.2rem' }}>{services[2].price}</div>
           </div>
 
           {/* Card 3: Small */}
