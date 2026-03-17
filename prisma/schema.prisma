@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Commission {
+  id         String   @id
+  amount     Decimal  @db.Decimal(10, 2)
+  createdAt  DateTime @default(now())
+  orderId    String   @unique(map: "Commission_orderId_key")
+  employeeId String
+  employee   Employee @relation(fields: [employeeId], references: [id], map: "Commission_employeeId_fkey")
+  order      Order    @relation(fields: [orderId], references: [id], map: "Commission_orderId_fkey")
+
+  @@index([employeeId], map: "Commission_employeeId_fkey")
+  @@map("commission")
+}
+
+model Employee {
+  id             String       @id
+  name           String
+  role           String       @default("WASHER")
+  commissionRate Decimal      @db.Decimal(10, 2)
+  commissions    Commission[]
+  orders         Order[]
+
+  @@map("employee")
+}
+
+model InventoryItem {
+  id          String   @id
+  name        String
+  unit        String
+  quantity    Decimal  @db.Decimal(10, 2)
+  minQuantity Decimal  @db.Decimal(10, 2)
+  updatedAt   DateTime
+
+  @@map("inventoryitem")
+}
+
+model Member {
+  id          String     @id
+  name        String
+  phone       String     @unique(map: "Member_phone_key")
+  plateNumber String
+  tier        MemberTier @default(SILVER)
+  points      Int        @default(0)
+  createdAt   DateTime   @default(now())
+  orders      Order[]
+
+  @@map("member")
+}
+
+model Order {
+  id          String      @id
+  plateNumber String
+  vehicleType String
+  status      OrderStatus @default(WAITING)
+  totalPrice  Decimal     @db.Decimal(10, 2)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime
+  serviceId   String
+  memberId    String?
+  employeeId  String?
+  commission  Commission?
+  employee    Employee?   @relation(fields: [employeeId], references: [id], map: "Order_employeeId_fkey")
+  member      Member?     @relation(fields: [memberId], references: [id], map: "Order_memberId_fkey")
+  service     Service     @relation(fields: [serviceId], references: [id], map: "Order_serviceId_fkey")
+
+  @@index([employeeId], map: "Order_employeeId_fkey")
+  @@index([memberId], map: "Order_memberId_fkey")
+  @@index([serviceId], map: "Order_serviceId_fkey")
+  @@map("order")
+}
+
+model Service {
+  id          String  @id
+  name        String
+  description String?
+  price       Decimal @db.Decimal(10, 2)
+  duration    Int     @default(30)
+  orders      Order[]
+
+  @@map("service")
+}
+
+model User {
+  id       String   @id
+  email    String   @unique(map: "User_email_key")
+  password String
+  name     String
+  role     UserRole @default(CASHIER)
+
+  @@map("user")
+}
+
+enum OrderStatus {
+  WAITING
+  WASHING
+  DRYING
+  FINISHED
+
+  @@map("order_status")
+}
+
+enum MemberTier {
+  SILVER
+  GOLD
+  PLATINUM
+
+  @@map("member_tier")
+}
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  CASHIER
+
+  @@map("user_role")
+}
