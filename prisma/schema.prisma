@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Commission {
-  id         String   @id
+  id         String   @id @default(cuid())
   amount     Decimal  @db.Decimal(10, 2)
   createdAt  DateTime @default(now())
   orderId    String   @unique(map: "Commission_orderId_key")
@@ -21,7 +21,7 @@ model Commission {
 }
 
 model Employee {
-  id             String       @id
+  id             String       @id @default(cuid())
   name           String
   role           String       @default("WASHER")
   commissionRate Decimal      @db.Decimal(10, 2)
@@ -32,7 +32,7 @@ model Employee {
 }
 
 model InventoryItem {
-  id          String   @id
+  id          String   @id @default(cuid())
   name        String
   unit        String
   quantity    Decimal  @db.Decimal(10, 2)
@@ -43,7 +43,7 @@ model InventoryItem {
 }
 
 model Member {
-  id          String     @id
+  id          String     @id @default(cuid())
   name        String
   phone       String     @unique(map: "Member_phone_key")
   plateNumber String
@@ -56,7 +56,7 @@ model Member {
 }
 
 model Order {
-  id          String      @id
+  id          String      @id @default(cuid())
   plateNumber String
   vehicleType String
   status      OrderStatus @default(WAITING)
@@ -78,7 +78,7 @@ model Order {
 }
 
 model Service {
-  id          String  @id
+  id          String  @id @default(cuid())
   name        String
   description String?
   price       Decimal @db.Decimal(10, 2)
@@ -89,7 +89,7 @@ model Service {
 }
 
 model User {
-  id       String   @id
+  id       String   @id @default(cuid())
   email    String   @unique(map: "User_email_key")
   password String
   name     String
