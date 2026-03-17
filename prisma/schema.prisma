@@ -37,7 +37,7 @@ model InventoryItem {
   unit        String
   quantity    Decimal  @db.Decimal(10, 2)
   minQuantity Decimal  @db.Decimal(10, 2)
-  updatedAt   DateTime
+  updatedAt   DateTime @updatedAt
 
   @@map("inventoryitem")
 }
@@ -62,7 +62,7 @@ model Order {
   status      OrderStatus @default(WAITING)
   totalPrice  Decimal     @db.Decimal(10, 2)
   createdAt   DateTime    @default(now())
-  updatedAt   DateTime
+  updatedAt   DateTime @updatedAt
   serviceId   String
   memberId    String?
   employeeId  String?
