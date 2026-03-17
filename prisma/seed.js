@@ -22,10 +22,11 @@ async function main() {
     where: { email: 'admin@rcb.com' },
     update: {},
     create: {
+      id: 'admin-user',
       email: 'admin@rcb.com',
       password: hashedPassword,
       name: 'Super Admin',
-      role: 'ADMIN',
+      role: 'ADMIN'
     },
   });
 
